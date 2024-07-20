@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import InputMask from "react-input-mask";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
+import { useRef } from "react";
 
 const validationInputSchema = Yup.object().shape({
   name: Yup.string()
@@ -19,9 +20,10 @@ const initialValues = {
   number: "",
 };
 
-const InputWithMask = ({ field, ...props }) => (
-  <InputMask {...field} {...props} />
-);
+const InputWithMask = ({ field, ...props }) => {
+  const inputRef = useRef(null);
+  return <InputMask {...field} {...props} ref={inputRef} />;
+};
 
 export default function ContactForm() {
   const dispatch = useDispatch();
