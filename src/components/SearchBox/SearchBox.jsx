@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import css from "./SearchBox.module.css";
 import { useId } from "react";
-import { filterContact } from "../../redux/filtersSlice";
+import { filterContact, selectFilter } from "../../redux/filtersSlice";
 
 export default function SearcBox() {
   const inputId = useId();
 
   const dispatch = useDispatch();
-  const name = useSelector((state) => state.filters.name);
+  const name = useSelector(selectFilter);
 
   const handleInputChange = (event) => {
     const value = event.target.value;
