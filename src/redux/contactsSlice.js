@@ -8,6 +8,7 @@ const contactSlice = createSlice({
   reducers: {
     addContact: (state, action) => {
       state.items.push(action.payload);
+      state.items.sort((a, b) => a.name.localeCompare(b.name));
     },
     deleteContact: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
